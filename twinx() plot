@@ -1,0 +1,26 @@
+Created on Wed Jan  4 15:26:48 2023
+
+@author: Funghang
+"""
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_excel(r'C:\Users\DELL\Desktop\apple.xlsx')
+#print(datafile)
+
+#create figure and axis objects with subplots
+fig, ax1 = plt.subplots()
+
+#creating twin object 
+ax2=ax1.twinx()
+ax2.set_ylim(0, 400);
+
+# making a plot 
+ax1.scatter(df['day'], df['volume'], color='red');
+ax2.scatter(df['day'], df['OLR'], color='blue');
+
+#set x and y label
+ax1.set_xlabel("No of days", fontsize=14)
+ax1.set_ylabel("Volume of biomethane potential(ml)", color='red', fontsize=14)
+ax2.set_ylabel("OLR", color='blue', fontsize=14)
+plt.title("Scattered graph")
+plt.show()
